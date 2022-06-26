@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Rubik+Moonrocks&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Rubik Moonrocks", cursive;
+      }
+      body {
+        background-color: rgba(0, 0, 0, 0.801);
+      }
+      .navbar {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: row;
+        margin: 20px;
+      }
+      .navbar button {
+        padding: 10px;
+        font-size: 30px;
+        cursor: pointer;
+        margin: 10px;
+      }
+      .navbar .text {
+        font-size: 20px;
+        color: white;
+      }
+      .mainsection {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px;
+        flex-direction: column;
+      }
+      .mainsection .textmain {
+        font-size: 80px;
+        color: white;
+        margin: 20px;
+      }
+      .box {
+        width: 300px;
+        height: 300px;
+        border: 2px solid white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 70px;
+        color: rgba(0, 0, 0, 0.8);
+        position: relative;
+        background-color: #fff;
+        /* padding: 20px; */
+      }
+      .box:after {
+        content: "";
+        position: absolute;
+        width: 100vw;
+        height: 4px;
+        background-color: #fff;
+        z-index: -1;
+      }
+      .footer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: row;
+      }
+      .inputs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 10px;
+      }
+      input {
+        font-size: 30px;
+        text-align: end;
+        width: 200px;
+      }
+      .inputs button {
+        padding: 10px;
+        font-size: 30px;
+        cursor: pointer;
+        margin: 10px;
+      }
+      .footer .textbox {
+        font-size: 30px;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <button class="again">Again !</button>
+      <div class="text">Between 1 and 20</div>
+    </div>
+    <div class="mainsection">
+      <div class="textmain">Guess My Number !</div>
+      <div class="box">?</div>
+    </div>
+    <div class="footer">
+      <div class="inputs">
+        <input type="number" name="" id="" min="0" max="20" required />
+        <button class="check">Check !</button>
+      </div>
+      <div class="textbox">
+        <p class="numberlimit">Start guessing !</p>
+
+        <p>Score: <span class="score"></span></p>
+        <p>HighScore: <span class="highscore"></span></p>
+      </div>
+    </div>
+
+    <script>
+      var inputnumber = document.querySelector("input");
+      var checkbtn = document.querySelector(".check");
+      var overflownumber = document.querySelector(".overflow");
+      var againbtn = document.querySelector(".again");
+      var score = document.querySelector(".score");
+      var highscore = document.querySelector(".highscore");
+      var numberlimit = document.querySelector(".numberlimit");
+      var textheading = document.querySelector(".textmain");
+      var randomNum = Math.floor(Math.random() * 20);
+      var boxnumber = document.querySelector(".box");
+      score.innerText = 20;
+      highscore.innerText = 0;
+      function texthead(text, color) {
+        textheading.innerText = text;
+        textheading.style.color = color;
+      }
+      function guessedtext(text) {
+        numberlimit.innerText = text;
+      }
+      checkbtn.addEventListener("click", function () {
+        console.log(randomNum);
+        if (inputnumber.value > 20 || inputnumber.value < 0) {
+          guessedtext("incorrect number");
+        } else {
+          guessedtext("Start guessing !");
+        }
+        if (score.innerHTML > 0) {
+          score.innerHTML -= 1;
+        } else {
+          texthead("Game over", "red");
+        }
+        if (randomNum == inputnumber.value) {
+          texthead("WON", "green");
+          boxnumber.innerText = randomNum;
+          checkbtn.disabled = true;
+        }
+        if (randomNum > inputnumber.value) {
+          guessedtext("smaller then guess");
+        } else if (randomNum < inputnumber.value) {
+          guessedtext("larger then guess");
+        }
+      });
+      againbtn.addEventListener("click", function () {
+        if (randomNum == inputnumber.value) {
+          if (score.innerText >= highscore.innerText) {
+            highscore.innerText = score.innerText;
+          }
+        }
+
+        guessedtext("Start Guessing !");
+        randomNum = Math.floor(Math.random() * 20);
+        texthead("Guess My Number !", "white");
+        boxnumber.innerText = "?";
+        inputnumber.value = "";
+        score.innerText = 20;
+        checkbtn.disabled = false;
+      });
+    </script>
+  </body>
+</html>
