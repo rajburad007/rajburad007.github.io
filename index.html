@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Raj Burad | Designer & Developer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+      :root {
+        --black: #06070e;
+        --white: #fff;
+        --silver: #acb4b4;
+        --cadet: #596869;
+        --candypink: #e0777d;
+        --bittersweet: #ff6666;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        scroll-behavior: smooth;
+      }
+      html {
+        background-color: var(--black);
+      }
+      body {
+        overflow-y: hidden;
+        overflow-x: scroll;
+        display: flex;
+        flex-direction: row;
+        background-color: var(--black);
+      }
+      .home {
+        display: grid;
+        grid-template-columns: 1fr 15fr;
+        width: 100vw;
+        position: relative;
+        height: 100vh;
+      }
+      .home .nav {
+        height: 100vh;
+        z-index: 999;
+      }
+      .home .section {
+        height: 100vh;
+      }
+      .home .nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        box-shadow: inset 10px 10px 13px rgba(128, 128, 128, 0.338);
+        position: fixed;
+        background-color: var(--white);
+        transition: all ease-in 0.4s;
+      }
+      .display {
+        transform: translateX(-130px);
+      }
+
+      .home .nav ul li {
+        transform: rotate(-90deg);
+      }
+      .home .nav ul li a {
+        text-decoration: none;
+        font-size: 20px;
+        color: var(--bittersweet);
+        -webkit-text-stroke-width: 1px;
+        transition: all ease-in 0.1s;
+        padding: 5px;
+      }
+      .home .nav ul li a:hover {
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: var(--bittersweet);
+      }
+      .section {
+        background-color: var(--black);
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100vw;
+        height: 150vh;
+      }
+      .textcont {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 20px;
+      }
+      .textcont p {
+        font-size: 15px;
+      }
+      .textcont h2 {
+        font-size: 35px;
+        white-space: nowrap;
+      }
+      .type p {
+        animation: type steps(40, end) 5s infinite, blink 0.4s step-end infinite;
+        overflow: hidden;
+        white-space: nowrap;
+        display: inline-block;
+        font-size: 40px;
+        color: var(--bittersweet);
+        border-right: 1px solid var(--bittersweet);
+        letter-spacing: 3px;
+      }
+
+      .line {
+        width: 30px;
+        height: 3px;
+        background-color: var(--bittersweet);
+        margin: 5px;
+      }
+      .hamburger {
+        cursor: pointer;
+        position: fixed;
+        top: 50px;
+        right: 10%;
+        z-index: 999;
+        border-radius: 10px;
+        background: var(--black);
+        z-index: 998;
+        padding: 10px;
+        transition: all ease-in 0.5s;
+      }
+      .rot {
+        transform: rotate(90deg);
+      }
+      .project {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        right: -1300px;
+        background: var(--black);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .tiles {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        margin: 20px;
+      }
+      .tile {
+        width: 250px;
+        height: 250px;
+        background-color: var(--white);
+        margin: 20px;
+        box-shadow: 5px 5px 1px var(--bittersweet);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+      }
+
+      .project h2 {
+        color: var(--white);
+        font-size: 30px;
+        text-align: center;
+      }
+      .tile:hover {
+        transform: translateY(-10px);
+      }
+      .tile:hover .view {
+        visibility: visible;
+        opacity: 1;
+      }
+      .view {
+        visibility: hidden;
+        opacity: 0;
+        transition: all ease-in 0.1s;
+        border: 0px;
+        background-color: transparent;
+        font-size: 20px;
+        color: var(--bittersweet);
+        padding: 10px;
+        transition: all ease-in 0.2s;
+        border-radius: 10px;
+        margin-top: 10px;
+      }
+      .abt {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        right: -340vh;
+        background: var(--black);
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        color: var(--white);
+      }
+
+      .skills {
+        width: 100%;
+        max-width: 600px;
+        padding: 0 30px;
+      }
+
+      .skill-name {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--white);
+        text-transform: uppercase;
+        margin: 20px 0;
+      }
+
+      .skill-bar {
+        height: 14px;
+        background: #282828;
+        border-radius: 3px;
+      }
+
+      .skill-per {
+        height: 14px;
+        background: var(--bittersweet);
+        border-radius: 3px;
+        position: relative;
+
+        color: var(--black);
+      }
+      .skill-per-animation {
+        animation: fillBars 2.5s 1;
+      }
+
+      .skill-per::before {
+        content: attr(per);
+        position: absolute;
+        padding: 4px 6px;
+        background: var(--white);
+        border-radius: 4px;
+        font-size: 12px;
+        top: -35px;
+        right: 0;
+        transform: translateX(50%);
+        z-index: 99;
+      }
+
+      .skill-per::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: var(--white);
+        top: -20px;
+        right: 0;
+        transform: translateX(50%) rotate(45deg);
+        border-radius: 2px;
+      }
+
+      input,
+      button,
+      textarea {
+        border: 2px solid var(--white);
+        background-image: none;
+        background-color: #dadad300;
+        box-shadow: none;
+        padding: 15px;
+        color: var(--white);
+      }
+      input:focus,
+      button:focus,
+      textarea:focus {
+        outline: 2px solid var(--bittersweet);
+      }
+
+      textarea {
+        min-height: 50px;
+        resize: vertical;
+      }
+
+      button {
+        cursor: pointer;
+        font-weight: 500;
+      }
+
+      .feedback-card {
+        border: 1px solid var(--white);
+        width: 500px;
+        /* height: 200px; */
+
+        background-color: rgb(4, 4, 4);
+        margin: 0 auto;
+        box-shadow: -0.6rem 0.6rem 0 rgba(29, 30, 28, 0.26);
+      }
+      .feedback-header {
+        text-align: center;
+        padding: 8px;
+        font-size: 14px;
+        font-weight: 700;
+        border-bottom: 1px solid var(--white);
+        color: var(--white);
+      }
+      .feedback-body {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+      .feedback-body__message {
+        margin-top: 10px;
+      }
+      .feedback-body button {
+        margin-top: 10px;
+        align-self: flex-end;
+      }
+      .info {
+        width: 50%;
+        padding: 150px;
+      }
+      .skill h3 {
+        margin: 10px;
+      }
+      ::placeholder {
+        color: var(--white);
+      }
+      .margin {
+        margin: 10px;
+      }
+      .social {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+      }
+      .fa {
+        margin: 10px;
+        padding: 10px;
+        color: var(--white);
+        text-decoration: none;
+      }
+      .fa:hover {
+        color: var(--bittersweet);
+      }
+      .cv {
+        margin: 30px;
+      }
+      .about p {
+        margin: 10px;
+      }
+
+      .light {
+        --white: --black;
+      }
+      .sub:hover,
+      .cv:hover {
+        border: 2px solid var(--bittersweet);
+      }
+      .b2 {
+        background-image: url(shoe.jpg);
+        background-size: cover;
+        background-position: -50px;
+      }
+      .b1 {
+        background-image: url(jscolorflipper.png);
+        background-position: center center;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+        margin: 10px;
+      }
+      .b3 {
+        background-image: url(TRAVEL.jpg);
+        background-size: cover;
+        background-position: 0 -100px;
+      }
+
+      @keyframes fillBars {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+      @keyframes blink {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: var(--bittersweet);
+        }
+      }
+
+      @keyframes type {
+        0% {
+          width: 0;
+        }
+        50% {
+          width: 100%;
+        }
+        100% {
+          width: 0%;
+        }
+      }
+      @media (max-width: 420px) {
+        .section {
+          justify-content: center;
+          align-items: center;
+          flex-direction: column-reverse;
+        }
+        .img-first {
+          width: 100px;
+        }
+        .img-second {
+          width: 50px;
+        }
+        body {
+          flex-direction: column;
+          overflow-y: scroll;
+          overflow-x: hidden;
+        }
+        .project {
+          position: relative;
+          left: 0;
+          top: 0vh;
+          height: 130vh;
+        }
+        .tiles {
+          display: flex;
+          flex-direction: column;
+        }
+        .tile {
+          width: 200px;
+          height: 200px;
+        }
+        .abt {
+          position: relative;
+          left: 0;
+          flex-direction: column;
+          height: 250vh;
+          top: -1px;
+        }
+        .info {
+          padding: 0 !important;
+          width: 90vw !important;
+        }
+        .feedback-card {
+          width: 300px !important;
+        }
+      }
+      @media (max-width: 700px) and (min-width: 420px) {
+        /* .illustration {
+          display: none;
+        } */
+        .section {
+          justify-content: center;
+          align-items: center;
+          flex-direction: column-reverse;
+        }
+        body {
+          flex-direction: column;
+          overflow-y: scroll;
+          overflow-x: hidden;
+        }
+        .project {
+          position: relative;
+          left: 0;
+          top: 0vh;
+          height: 200vh;
+        }
+        .tiles {
+          display: flex;
+          flex-direction: column;
+        }
+        .tile {
+          width: 200px;
+          height: 200px;
+        }
+        .abt {
+          position: relative;
+          left: 0;
+          flex-direction: column;
+          height: 180vh;
+        }
+        .info {
+          padding: 0 !important;
+          width: 90vw !important;
+        }
+        .feedback-card {
+          width: 300px !important;
+        }
+      }
+
+      @media (min-width: 700px) and (max-width: 1300px) {
+        body {
+          overflow-y: hidden;
+          overflow-x: scroll;
+        }
+        .section {
+          justify-content: space-evenly;
+          align-items: center;
+          flex-direction: column-reverse;
+        }
+        body {
+          flex-direction: column;
+          overflow-y: scroll;
+          overflow-x: hidden;
+        }
+        .project {
+          position: relative;
+          left: 0;
+          /* height: 200vw; */
+          height: 150vw;
+          /* top: 99vh; */
+        }
+        .abt {
+          position: relative;
+          left: 0;
+          flex-direction: column;
+          height: 140vh;
+          top: -1px;
+        }
+        .info {
+          padding: 0 !important;
+          width: 70vw !important;
+        }
+
+        .tile {
+          width: 300px;
+          height: 300px;
+        }
+        .feedback-card {
+          width: 500px !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="home" id="home">
+      <div class="hamburger">
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+        <div class="line line3"></div>
+      </div>
+      <div class="nav">
+        <ul class="navitems display">
+          <li><a href="#home">HOME</a></li>
+          <li><a href="#project">PROJECTS</a></li>
+          <li><a href="#abt">ABOUT</a></li>
+        </ul>
+      </div>
+      <div class="section">
+        <div class="textcont" style="color: white">
+          <p>Hello!</p>
+          <h2>I'm Raj Burad</h2>
+          <h3 class="type"><p class="change"></p></h3>
+        </div>
+        <div class="illustration">
+          <img src="Untitled.png" alt="" width="200px" class="img-first" />
+          <img src="bori.png" alt="" width="90px" class="img-second" />
+        </div>
+      </div>
+    </div>
+    <div class="project" id="project">
+      <h2>Project</h2>
+      <div class="tiles">
+        <a href="colorSwitcher.html" target="_blank">
+          <div class="tile b1">JS COLOR FLIPPER</div></a
+        >
+
+        <a
+          href="https://www.canva.com/design/DAFENUQMY-c/kDTnGDCvSk-D6JVvHesc8A/view?utm_content=DAFENUQMY-c&utm_campaign=designshare&utm_medium=link&utm_source=homepage_design_menu"
+          target="_blank"
+          ><div class="tile b2">FOOTWARE APP DESIGN</div></a
+        >
+
+        <a
+          href="https://www.canva.com/design/DAFCRIy0z40/oj1_DEgH5EhuWOzzQeENQQ/view?utm_content=DAFCRIy0z40&utm_campaign=designshare&utm_medium=link&utm_source=homepage_design_menu"
+          target="_blank"
+          ><div class="tile b3">TRAVEL APP DESIGN</div></a
+        >
+
+        <!-- <div class="tile b4">
+          <a href=""><button class="view">View project</button></a>
+        </div> -->
+      </div>
+    </div>
+    <div class="abt" id="abt">
+      <div class="info">
+        <div class="about">
+          <h1 class="margin">About</h1>
+          <p>
+            Hello, My name is Raj Burad. I am a Frontend Web Developer and UI/UX
+            Designer. Graduating with Bachelor's of Technology in Electronics
+            and communication - 2024.I am passionate about designing website and
+            development.
+          </p>
+        </div>
+        <h3 class="margin">Skills</h3>
+        <div class="skills">
+          <div class="skill">
+            <div class="skill-name">HTML</div>
+            <div class="skill-bar">
+              <div class="skill-per" per="90%" style="max-width: 90%"></div>
+            </div>
+          </div>
+
+          <div class="skill">
+            <div class="skill-name">CSS</div>
+            <div class="skill-bar">
+              <div class="skill-per" per="70%" style="max-width: 70%"></div>
+            </div>
+          </div>
+
+          <div class="skill">
+            <div class="skill-name">Javascript</div>
+            <div class="skill-bar">
+              <div class="skill-per" per="40%" style="max-width: 40%"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-name">UI/UX design</div>
+            <div class="skill-bar">
+              <div class="skill-per" per="60%" style="max-width: 60%"></div>
+            </div>
+          </div>
+        </div>
+        <a href="Resume Format.pdf" target="_blank"
+          ><button class="feedback-body__submit cv">DOWNLOAD CV</button></a
+        >
+      </div>
+      <div class="feedback-card">
+        <div class="feedback-header">ENQUIRY FORM</div>
+        <form
+          class="feedback-body"
+          action="https://formsubmit.co/14august2002raj@gmail.com"
+          method="POST"
+        >
+          <input
+            ,type="email"
+            class="feedback-body__email"
+            placeholder="Email"
+            required
+          /><textarea
+            ,type="text"
+            class="feedback-body__message"
+            placeholder="Message"
+            rows="10"
+            required
+          ></textarea
+          ><button class="feedback-body__submit sub">SEND</button>
+          <div class="social">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-instagram"></a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      var occ = ["Developer", "Designer", "Illustrator"];
+      var change = document.querySelector(".change");
+      var hamburger = document.querySelector(".hamburger");
+      var navitems = document.querySelector(".navitems");
+      var root = document.querySelector(":root");
+
+      var num = 0;
+      change.innerText = occ[0];
+      setInterval(() => {
+        num++;
+        if (num >= 0 && num <= 2) {
+          change.innerText = occ[num];
+        } else {
+          num = 0;
+          change.innerText = occ[0];
+        }
+
+        console.log(num);
+      }, 5000);
+      hamburger.addEventListener("click", function () {
+        navitems.classList.toggle("display");
+        hamburger.classList.toggle("rot");
+      });
+      window.addEventListener("scroll", function () {
+        if (window.scrollX >= 1800) {
+          for (let i = 0; i <= 3; i++) {
+            document
+              .querySelectorAll(".skill-per")
+              [i].classList.add("skill-per-animation");
+          }
+        }
+        if (window.scrollY >= 930) {
+          for (let i = 0; i <= 3; i++) {
+            document
+              .querySelectorAll(".skill-per")
+              [i].classList.add("skill-per-animation");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
